@@ -6,19 +6,121 @@
   <script src="https://unpkg.com/react@17.0.0/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
   <script type="text/babel">
     // 🐨 Make a function called `message` which returns the JSX we want to share
-
+    function message00(props) {
+      return <div className="message">{props.children}</div>
+    }
     // 🐨 use that function in place of the divs below with:
     // 💰 {message({children: 'Hello World'})} {message({children: 'Goodbye World'})}
-    const element = (
+    //00
+    const element00 = (
       <div className="container">
-        <div className="message">Hello World</div>
-        <div className="message">Goodbye World</div>
+        {message00({children:'Olar mundo'})}
+        {message00({children:'Tchau mundo'})}
       </div>
     )
 
+    // 01
+    const greeting = (phrase) => React.createElement(message00, {children: phrase } ) 
+    const hy = React.createElement(message00, {children: 'hy'} ) 
+    const element01 = (
+      <div className="container">
+        {greeting('Olar mundo-01-react')}
+        {greeting('Tchau mundo-01-react')}
+        {hy}
+        {message00({children:'Tchau mundo-func'})}
+      </div>
+    )
+
+    //02
+    function Message02({children}) {
+      return <div className="message">{children}</div>
+    } 
+    const element02 = (
+      <div className="container">
+        <Message02>
+          olar mundo-02
+          <Message02>Tchau mundo-02</Message02>
+        </Message02>
+        
+      </div>
+    )
+
+    //03
+     const PropTypes03 = {
+      string(props, propName, componentName) {
+        if (typeof props[propName] !== 'string') {
+          return new Error(`Expected a value`)
+        }
+      },
+    }
+
+    function Message03({greeting, subject}) {
+      return (
+        <div className="message">
+          {greeting}, {subject}
+        </div>
+      )
+    }
+
+    Message03.propTypes ={
+      greeting: PropTypes03.string,
+      subject: PropTypes03.string,
+    }
+
+    const element03 = (
+      <div className="container">
+        <Message03 greeting="olar" subject="mundo-03"/>
+        <Message03 greeting="olar"/>
+      </div>
+    )
+
+    //04
+    function Message04({greeting, subject}) {
+      return (
+        <div className="message">
+          {greeting}, {subject}
+        </div>
+      )
+    }
+
+    Message04.propTypes ={
+      greeting: PropTypes.string.isRequired,
+      subject: PropTypes.string.isRequired,
+    }
+
+    const element04 = (
+      <div className="container">
+        <Message04 greeting="olar" subject="mundo-04"/>
+        <Message04 greeting="olar" subject={[]}/>
+      </div>
+    )
+
+    // 05
+    function Message05({greeting, subject, children}) {
+      return (
+        <div className="message">
+          {greeting}, {subject}
+          {children}
+        </div>
+      )
+    }
+
+    Message05.propTypes ={
+      greeting: PropTypes.string.isRequired,
+      subject: PropTypes.string.isRequired,
+    }
+    const element05 = (
+      <React.Fragment>
+        <Message05 greeting="olar" subject="mundo-05"/>
+        <Message05 greeting="tchau" subject="mundo-05">
+          <Message05 greeting="inner" subject="mundo-06"/>
+        </Message05>
+      </React.Fragment>
+    )
     // 💯 This is only the first step to making actual React components. The rest is in the extra credit!
-    ReactDOM.render(element, document.getElementById('root'))
+    ReactDOM.render(element05, document.getElementById('root'))
   </script>
 </body>
