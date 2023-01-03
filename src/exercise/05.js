@@ -40,9 +40,10 @@ function App() {
       <Box size="large" color="red">
         outro box
       </Box>
-      <Box size="medium" color="purple" text="another box" />
-      <Box size="small" color="green" text="little box" />
-      <Box size="large" text="other box" />
+      <Box size="small" color="lightblue" text="small box" />
+      <Box size="medium" color="pink" text="medium box" />
+      <Box size="large" color="orange" text="large box" />
+      <Box size="large" text="large box" />
     </div>
   )
 }
