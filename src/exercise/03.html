@@ -23,7 +23,11 @@
     const className = 'container'
     const greeting = 'Hello'
     const subject = 'World'
-    const element = <div className={className} children={`${greeting} ${subject}`} />
+    const props = {className, children: `${greeting} ${subject}`}
+    const elementInterpoled = (
+      <div className={className} children={`${greeting} ${subject}`} />
+    )
+    const elementSpread = <div {...props} />
 
     // 💰 there are a few subtle differences between JSX and HTML. One such
     // difference is how you apply a class to an element in JSX is by using
@@ -31,6 +35,6 @@
     // 📜 You can learn the differences between JSX and HTML syntax from the React docs here:
     // https://reactjs.org/docs/dom-elements.html#differences-in-attributes
 
-    ReactDOM.createRoot(document.getElementById('root')).render(element)
+    ReactDOM.createRoot(document.getElementById('root')).render(elementSpread)
   </script>
 </body>
