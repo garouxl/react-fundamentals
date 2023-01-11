@@ -2,29 +2,32 @@
 <!-- http://localhost:3000/isolated/exercise/01.html -->
 
 <!-- 🐨 Create (in HTML) a <body> with a <div> with the id of "root" -->
-<!DOCTYPE html>
-<html lang="en">
+  <!DOCTYPE html>
+  <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio 1</title>
   </head>
   <body>
     <script type="module">
-      const root = document.createElement('root');
-      const el = document.createElement('div')
-      root.id = 'root';
-      el.textContent = 'Olar mundo!';
-      root.append(el);
-      document.body.append(root);
+      const rootElement = document.createElement('div')
+      const divElement = document.createElement('div')
+      
+      rootElement.setAttribute('id', 'root')
+      divElement.textContent = 'Hello world'
+      divElement.className = 'container'
+      
+      document.body.append(rootElement)
+      document.getElementById('root').append(divElement)
     </script>
   </body>
-</html>
+  </html>
 <!-- 🐨 Then create a <script type="module"> for your JavaScript -->
 <!--   📜 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#attributes -->
 <!--   📜 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules -->
-<!--   📜 https://github.com/mdn/js-examples/tree/master/modules -->
+<!--   📜 https://github.com/mdn/js-examples/tree/master/module-examples -->
 
 <!-- These next instructions are to be written in JavaScript in the <script> tag -->
 <!-- 🐨 Create a div -->
