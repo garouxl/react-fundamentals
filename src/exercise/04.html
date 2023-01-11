@@ -11,7 +11,7 @@
     function Message({greeting, subject, children}) {
       return (
         <div className="message">
-          {greeting}, {subject} {children}
+          {greeting} {children}
         </div>
       )
     }
@@ -28,14 +28,14 @@
 
     Message.propTypes = {
       greeting: PropTypes.string.isRequired,
-      subject: PropTypes.string.isRequired,
     }
 
     const element = (
       <>
         <Message greeting="Hello" />
-        <Message greeting="Goodbye" subject="World">
-          <Message greeting="Hello Again" subject="Stranger!" />
+        <Message>Hello Another World</Message>
+        <Message greeting="Goodbye World">
+          <Message greeting="Hello Again" />
         </Message>
       </>
     )
