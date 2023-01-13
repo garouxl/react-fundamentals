@@ -39,7 +39,7 @@ ${chalk.reset(prettyDOM(box))}
 
   const small = screen.getByText(/small/i)
   const medium = screen.getByText(/medium/i)
-  const large = screen.getAllByText(/large/i)[0]
+  const large = screen.getByText(/large/i)
 
   expect(small).toHaveClass('box--small')
   expect(small).toHaveStyle('background-color: lightblue;')
