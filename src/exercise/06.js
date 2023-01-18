@@ -1,7 +1,7 @@
 // Basic Forms
 // http://localhost:3000/isolated/exercise/06.js
 
-import * as React from 'react'
+// import * as React from 'react'
 
 // 🐨 add a submit event handler here (`handleSubmit`).
 // 💰 Make sure to accept the `event` as an argument and call
@@ -32,7 +32,7 @@ function UsernameForm1({onSubmitUsername}) {
   function handleChange(event) {
     const value = event.target.value
     if (value === value.toLowerCase()) setError(null)
-    else setError('Invalid letter case')
+    else setError('InError letter case')
 
     if (inputEl.current.value === '') setEmpty(true)
     else setEmpty(false)
@@ -96,6 +96,8 @@ function UsernameForm1({onSubmitUsername}) {
 }
  */
 
+/*
+
 function Counter() {
   const [counter, setCounter] = React.useState(0)
   return <button onClick={() => setCounter(counter + 1)}>{counter}</button>
@@ -158,6 +160,103 @@ function App() {
       <Counter />
     </>
   )
+}
+
+export default App
+
+*/
+// Basic Forms
+// http://localhost:3000/isolated/exercise/06.js
+
+import * as React from 'react'
+
+function UsernameForm({onSubmitUsername}) {
+  const userNameInputRef = React.useRef('')
+  const [error, setError] = React.useState(null)
+  const [value, setValue] = React.useState('')
+
+  function handleChange(event) {
+    const {target: { value: eventValue }} = event
+    const isValid = eventValue === eventValue.toLowerCase()
+    setValue(eventValue)
+    setError(isValid ? null : 'Username must be lower case')
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault()
+    onSubmitUsername(userNameInputRef.current.value)
+  }
+
+  function Alert({error}) {
+    return (
+      error && (
+        <div role="alert" style={{color: 'red'}}>
+          {error}
+        </div>
+      )
+    )
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label htmlFor="userNameInput">Username:</label>
+        <input
+          ref={userNameInputRef}
+          id="userNameInput"
+          type="text"
+          value={value}
+          onChange={handleChange}
+        />
+      </div>
+      <button
+        disabled={error || value === '' ? true : false}
+        type="submit"
+      >
+        Submit
+      </button>
+      <Alert error={error} />
+    </form>
+  )
+}
+
+function UsernameFormNoError({onSubmitUsername}) {
+  const [userName, setUsername] = React.useState('')
+
+  function handleChange({target: { value: eventValue }}) {
+    setUsername(eventValue.toLowerCase())
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault()
+    onSubmitUsername(userName)
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label htmlFor="userNameInput">Name:</label>
+        <input
+          id="userNameInput"
+          type="text"
+          value={userName}
+          onChange={handleChange}
+        />
+      </div>
+      <button type="submit" disabled={!Boolean(userName)} >
+        Send It
+      </button>
+    </form>
+  )
+}
+
+function App() {
+  const onSubmitUsername = username => alert(`You entered: ${username}`)
+  return <>
+    <UsernameForm onSubmitUsername={onSubmitUsername} />
+    <hr />
+    <UsernameFormNoError onSubmitUsername={onSubmitUsername} />
+  </>
 }
 
 export default App
