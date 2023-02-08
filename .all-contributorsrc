@@ -572,6 +572,26 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "jgorfine-zendesk",
+      "name": "Jen Gorfine",
+      "avatar_url": "https://avatars.githubusercontent.com/u/93289772?v=4",
+      "profile": "https://github.com/jgorfine-zendesk",
+      "contributions": [
+        "bug",
+        "a11y",
+        "code"
+      ]
+    },
+    {
+      "login": "ambujsahu81",
+      "name": "Ambuj sahu",
+      "avatar_url": "https://avatars.githubusercontent.com/u/118078892?v=4",
+      "profile": "https://github.com/ambujsahu81",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "skipCi": true,
